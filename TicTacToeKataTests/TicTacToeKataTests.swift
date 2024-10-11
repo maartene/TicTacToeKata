@@ -10,8 +10,7 @@ import Testing
 
 struct TicTacToeKataTests {
 
-    @Test("The test framework is behaving correctly") func example() async throws {
+    @Test("The test framework is behaving correctly") func example() {
         #expect(1 + 1 == 2)
     }
-
 }
