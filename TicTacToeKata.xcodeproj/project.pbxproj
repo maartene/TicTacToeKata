@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DEB0954B2CB8FDBB00BB55C3 /* NOTES.md in Sources */ = {isa = PBXBuildFile; fileRef = DEB0954A2CB8FDB800BB55C3 /* NOTES.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DEB0952E2CB8FDAF00BB55C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		DEB0951D2CB8FDAE00BB55C3 /* TicTacToeKata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToeKata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB0952D2CB8FDAF00BB55C3 /* TicTacToeKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEB095372CB8FDAF00BB55C3 /* TicTacToeKataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeKataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEB0954A2CB8FDB800BB55C3 /* NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = NOTES.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		DEB095142CB8FDAE00BB55C3 = {
 			isa = PBXGroup;
 			children = (
+				DEB0954A2CB8FDB800BB55C3 /* NOTES.md */,
 				DEB0951F2CB8FDAE00BB55C3 /* TicTacToeKata */,
 				DEB095302CB8FDAF00BB55C3 /* TicTacToeKataTests */,
 				DEB0953A2CB8FDAF00BB55C3 /* TicTacToeKataUITests */,
@@ -236,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB0954B2CB8FDBB00BB55C3 /* NOTES.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
