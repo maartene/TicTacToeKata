@@ -11,7 +11,7 @@ import Testing
 struct TicTacToeKataTests {
 
     @Test("The test framework is behaving correctly") func example() async throws {
-        #expect(1 + 1 == 3)
+        #expect(1 + 1 == 2)
     }
 
 }
