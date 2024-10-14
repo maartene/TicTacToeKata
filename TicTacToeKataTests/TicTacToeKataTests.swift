@@ -23,4 +23,13 @@ struct TicTacToeKataTests {
     @Test("A TicTacToe board is three high") func ticTacToeBoardIsThreeHigh() {
         #expect(board.height == 3)
     }
+    
+    @Test("A new TicTacToe board is empty") func ticTacToeBoardIsEmpty() {
+        for row in 0 ..< board.height {
+            for col in 0 ..< board.width {
+                #expect(board[row: row, col: col] == .empty)
+            }
+        }
+        
+    }
 }
