@@ -13,6 +13,7 @@ import Testing
 struct TicTacToeBoard {
     enum TicTacToeCell {
         case empty
+        case nought
     }
     
     let width = 3
@@ -21,10 +22,14 @@ struct TicTacToeBoard {
     subscript (row: Int, col: Int) -> TicTacToeCell {
         .empty
     }
+    
+    mutating func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) {
+        
+    }
 }
 
 struct TicTacToeKataTests {
-    let board = TicTacToeBoard()
+    var board = TicTacToeBoard()
     
     @Test("A TicTacToe board is three wide") func ticTacToeBoardIsThreeWide() {
         #expect(board.width == 3)
@@ -42,7 +47,7 @@ struct TicTacToeKataTests {
         }
     }
     
-    @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") func ticTacToeCellIsNotEmpty() {
+    @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") mutating func ticTacToeCellIsNotEmpty() {
         let cell: TicTacToeBoard.TicTacToeCell = .nought
         let row: Int = 1
         let col: Int = 0
