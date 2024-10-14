@@ -68,7 +68,7 @@ struct TicTacToeKataTests {
         #expect(board[row, col] == cell)
     }
     
-    @Test("Placing a TicTacToeCell outside of the board, throws an error") func ticTacToeCellOutsideOfBoardThrowsError() throws {
+    @Test("Placing a TicTacToeCell outside of the board, throws a TicTacToeError error") func ticTacToeCellOutsideOfBoardThrowsError() throws {
         let cell = TicTacToeBoard.TicTacToeCell.cross
         #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: -1, col: 1) }
         #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 1, col: -1) }
