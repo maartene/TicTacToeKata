@@ -26,8 +26,12 @@ class TicTacToeBoard {
     
     lazy var cells: [[TicTacToeCell]] = Array(repeating: Array(repeating: .empty, count: width), count: height)
     
-    subscript (row: Int, col: Int) -> TicTacToeCell {
-        cells[row][col]
+    subscript (row: Int, col: Int) -> TicTacToeCell? {
+        guard (0 ..< width).contains(col), (0 ..< height).contains(row) else {
+            return nil
+        }
+        
+        return cells[row][col]
     }
     
     func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) throws {
