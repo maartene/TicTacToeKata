@@ -75,4 +75,11 @@ struct TicTacToeKataTests {
         #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 4, col: 0) }
         #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 2, col: 67) }
     }
+    
+    @Test("Retrieving a cell outside of the board, returns nil") func ticTacToeCellOutsideOfBoardReturnsNil() {
+        #expect(board[-1, 1] == nil)
+        #expect(board[1, -6] == nil)
+        #expect(board[4, 0] == nil)
+        #expect(board[2, 67] == nil)
+    }
 }
