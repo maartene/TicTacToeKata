@@ -9,7 +9,7 @@ import Testing
 @testable import TicTacToeKata
 
 struct TicTacToeBoard {
-    let width = 0
+    let width = 3
 }
 
 struct TicTacToeKataTests {
