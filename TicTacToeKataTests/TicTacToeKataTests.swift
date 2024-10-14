@@ -10,21 +10,24 @@ import Testing
 
 
 
-struct TicTacToeBoard {
+class TicTacToeBoard {
     enum TicTacToeCell {
         case empty
         case nought
+        case cross
     }
     
     let width = 3
     let height = 3
     
+    lazy var cells: [[TicTacToeCell]] = Array(repeating: Array(repeating: .empty, count: width), count: height)
+    
     subscript (row: Int, col: Int) -> TicTacToeCell {
-        .empty
+        cells[row][col]
     }
     
-    mutating func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) {
-        
+    func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) {
+        cells[row][col] = cell
     }
 }
 
