@@ -8,9 +8,19 @@
 import Testing
 @testable import TicTacToeKata
 
+
+
 struct TicTacToeBoard {
+    enum TicTacToeCell {
+        case empty
+    }
+    
     let width = 3
     let height = 3
+    
+    subscript (row: Int, col: Int) -> TicTacToeCell {
+        .empty
+    }
 }
 
 struct TicTacToeKataTests {
@@ -27,7 +37,7 @@ struct TicTacToeKataTests {
     @Test("A new TicTacToe board is empty") func ticTacToeBoardIsEmpty() {
         for row in 0 ..< board.height {
             for col in 0 ..< board.width {
-                #expect(board[row: row, col: col] == .empty)
+                #expect(board[row, col] == .empty)
             }
         }
         
