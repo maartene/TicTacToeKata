@@ -15,5 +15,9 @@
 ## Pomodoro 2
 
 ### Goals:
-- Have a valid board definition
+- Have a valid board definition (size, placing and retrieving cells) 🔴
+- Have changes of board state reflected in the UI 🔴
+
+### (Possible) goals for next pom:
+- you cannot place on an occupied cell
 - Have changes of board state reflected in the UI
