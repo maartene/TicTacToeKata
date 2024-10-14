@@ -11,6 +11,10 @@ import Testing
 
 
 class TicTacToeBoard {
+    enum TicTacToeError: Error {
+        case outsideOfBoard
+    }
+    
     enum TicTacToeCell {
         case empty
         case nought
@@ -26,7 +30,11 @@ class TicTacToeBoard {
         cells[row][col]
     }
     
-    func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) {
+    func placeCell(_ cell: TicTacToeCell, at row: Int, col: Int) throws {
+        guard (0 ..< width).contains(col), (0 ..< height).contains(row) else {
+            throw TicTacToeError.outsideOfBoard
+        }
+        
         cells[row][col] = cell
     }
 }
@@ -50,21 +58,21 @@ struct TicTacToeKataTests {
         }
     }
     
-    @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") mutating func ticTacToeCellIsNotEmpty() {
+    @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") mutating func ticTacToeCellIsNotEmpty() throws {
         let cell: TicTacToeBoard.TicTacToeCell = .nought
         let row: Int = 1
         let col: Int = 0
         
-        board.placeCell(cell, at: row, col: col)
+        try board.placeCell(cell, at: row, col: col)
         
         #expect(board[row, col] == cell)
     }
     
-    @Test("Placing a TicTacToeCell outside of the board, throws an error") func ticTacToeCellOutsideOfBoardThrowsError() {
+    @Test("Placing a TicTacToeCell outside of the board, throws an error") func ticTacToeCellOutsideOfBoardThrowsError() throws {
         let cell = TicTacToeBoard.TicTacToeCell.cross
-        board.placeCell(cell, at: -1, col: 1)
-        board.placeCell(cell, at: 1, col: -1)
-        board.placeCell(cell, at: 4, col: 0)
-        board.placeCell(cell, at: 2, col: 67)
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: -1, col: 1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 1, col: -1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 4, col: 0) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 2, col: 67) }
     }
 }
