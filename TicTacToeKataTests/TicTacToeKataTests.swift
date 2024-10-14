@@ -40,6 +40,15 @@ struct TicTacToeKataTests {
                 #expect(board[row, col] == .empty)
             }
         }
+    }
+    
+    @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") func ticTacToeCellIsNotEmpty() {
+        let cell: TicTacToeBoard.TicTacToeCell = .nought
+        let row: Int = 1
+        let col: Int = 0
         
+        board.placeCell(cell, at: row, col: col)
+        
+        #expect(board[row, col] == cell)
     }
 }
