@@ -10,6 +10,7 @@ import Testing
 
 struct TicTacToeBoard {
     let width = 3
+    let height = 3
 }
 
 struct TicTacToeKataTests {
