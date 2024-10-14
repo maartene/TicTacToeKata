@@ -14,13 +14,13 @@ struct TicTacToeBoard {
 }
 
 struct TicTacToeKataTests {
+    let board = TicTacToeBoard()
+    
     @Test("A TicTacToe board is three wide") func ticTacToeBoardIsThreeWide() {
-        let board = TicTacToeBoard()
         #expect(board.width == 3)
     }
     
     @Test("A TicTacToe board is three high") func ticTacToeBoardIsThreeHigh() {
-        let board = TicTacToeBoard()
         #expect(board.height == 3)
     }
 }
