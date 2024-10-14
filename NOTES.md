@@ -11,3 +11,9 @@
 ### (Possible) goals for next pom:
 
 - Create a model that when its state changes, displays the changes in the UI
+
+## Pomodoro 2
+
+### Goals:
+- Have a valid board definition
+- Have changes of board state reflected in the UI
