@@ -17,4 +17,9 @@ struct TicTacToeKataTests {
         let board = TicTacToeBoard()
         #expect(board.width == 3)
     }
+    
+    @Test("A TicTacToe board is three high") func ticTacToeBoardIsThreeHigh() {
+        let board = TicTacToeBoard()
+        #expect(board.height == 3)
+    }
 }
