@@ -13,10 +13,6 @@ struct TicTacToeBoard {
 }
 
 struct TicTacToeKataTests {
-    @Test("The test framework is behaving correctly") func example() {
-        #expect(1 + 1 == 2)
-    }
-    
     @Test("A TicTacToe board is three wide") func ticTacToeBoardIsThreeWide() {
         let board = TicTacToeBoard()
         #expect(board.width == 3)
