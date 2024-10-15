@@ -27,3 +27,11 @@
 ### Goals:
 - you cannot place on an occupied cell ✅
 - Have changes of board state reflected in the UI ✅
+
+### Notes:
+- To integrate with SwiftUI (Apples declerative and reactive UI framework, currently the default), requires some boilerplate code. In particular, it requires 'cells' to not be a lazy variable, meaning that if we want to prevent magic numbers, we need to define the boards width and height in static members. 
+
+### (Possible) goals for next pom:
+- Determine active player (and show in UI)
+- Determine legal moves
+- Implement an 'AI' that makes legal moves. 
