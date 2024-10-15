@@ -25,5 +25,5 @@
 ## Pomodoro 3
 
 ### Goals:
-- you cannot place on an occupied cell
-- Have changes of board state reflected in the UI
+- you cannot place on an occupied cell ✅
+- Have changes of board state reflected in the UI ✅

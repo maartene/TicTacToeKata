@@ -10,6 +10,17 @@ import SwiftUI
 struct CellView: View {
     let value: Character
     
+    init(_ cell: TicTacToeBoard.TicTacToeCell) {
+        switch cell {
+        case .empty:
+            value = " "
+        case .cross:
+            value = "X"
+        case .nought:
+            value = "O"
+        }
+    }
+    
     var body: some View {
         Text("\(value)")
             .font(.largeTitle)
@@ -23,6 +34,8 @@ struct CellView: View {
 }
 
 struct ContentView: View {
+    @StateObject var board = TicTacToeBoard()
+    
     var body: some View {
         VStack {
             Text("TicTacToe")
@@ -31,20 +44,12 @@ struct ContentView: View {
             
             Grid(horizontalSpacing: 5,
                  verticalSpacing: 5) {
-                GridRow {
-                    CellView("X")
-                    CellView("O")
-                    CellView("X")
-                }
-                GridRow {
-                    CellView("O")
-                    CellView(" ")
-                    CellView("O")
-                }
-                GridRow {
-                    CellView("X")
-                    CellView("O")
-                    CellView("X")
+                ForEach((0 ..< board.height), id: \.self) { row in
+                    GridRow {
+                        ForEach((0 ..< board.width), id: \.self) { column in
+                            CellView(board[row, column] ?? .empty)
+                        }
+                    }
                 }
             }
             .padding()
@@ -53,8 +58,8 @@ struct ContentView: View {
                 .font(.title2)
                 .foregroundStyle(.primary)
             
-            Button("Restart") {
-                print("Restart")
+            Button("Place!") {
+                try? board.placeCell(.cross, at: 1, col: 2)
             }
             .buttonStyle(.borderedProminent)
             
