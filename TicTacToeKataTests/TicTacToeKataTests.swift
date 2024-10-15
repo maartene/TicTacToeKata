@@ -11,7 +11,7 @@ import Combine
 
 
 
-class TicTacToeBoard {
+class TicTacToeBoard: ObservableObject {
     enum TicTacToeError: Error {
         case outsideOfBoard
         case alreadyOccupiedCell
@@ -23,10 +23,12 @@ class TicTacToeBoard {
         case cross
     }
     
-    let width = 3
-    let height = 3
+    static let width = 3
+    static let height = 3
+    var width: Int { Self.width }
+    var height: Int { Self.height }
     
-    lazy var cells: [[TicTacToeCell]] = Array(repeating: Array(repeating: .empty, count: width), count: height)
+    @Published var cells: [[TicTacToeCell]] = Array(repeating: Array(repeating: .empty, count: width), count: height)
     
     subscript (row: Int, col: Int) -> TicTacToeCell? {
         guard (0 ..< width).contains(col), (0 ..< height).contains(row) else {
@@ -111,11 +113,11 @@ struct TicTacToeKataTests {
     // MARK: Updating the UI
     var cancelables = Set<AnyCancellable>()         // boilerplate for the reflective system of iOS UI framework `SwiftUI`
     
-    @Test("When a cell is placed, the board notifies subscribers of the updated cells") func whenPlacingCell_subscribersAreNotified() throws {
+    @Test("When a cell is placed, the board notifies subscribers of the updated cells") mutating func whenPlacingCell_subscribersAreNotified() throws {
         var cells = [[TicTacToeBoard.TicTacToeCell]]()
         board.$cells.sink { updatedCells in
             cells = updatedCells
-        }
+        }.store(in: &cancelables)
         
         try board.placeCell(.cross, at: 2, col: 1)
         
