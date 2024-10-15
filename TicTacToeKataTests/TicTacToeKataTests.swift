@@ -40,6 +40,10 @@ class TicTacToeBoard {
             throw TicTacToeError.outsideOfBoard
         }
         
+        guard cells[row][col] == .empty else {
+            throw TicTacToeError.alreadyOccupiedCell
+        }
+        
         cells[row][col] = cell
     }
 }
