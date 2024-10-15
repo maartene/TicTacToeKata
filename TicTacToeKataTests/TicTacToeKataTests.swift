@@ -86,4 +86,18 @@ struct TicTacToeKataTests {
         #expect(board[4, 0] == nil)
         #expect(board[2, 67] == nil)
     }
+    
+    @Test("Placing a TicTacToeCell on an occupied space, throws a TicTacToeError.alreadyOccupiedCell error") func ticTacToeCellOnOccupiedCellThrowsError() throws {
+        try board.placeCell(.cross, at: 1, col: 2)
+        
+        #expect {
+            try board.placeCell(.nought, at: 1, col: 2)
+        } throws: { error in
+            guard let tttError = error as? TicTacToeBoard.TicTacToeError else {
+                Issue.record("The thrown error should be a TicTacToeError")
+            }
+            
+            #expect(tttError == .alreadyOccupiedCell)
+        }
+    }
 }
