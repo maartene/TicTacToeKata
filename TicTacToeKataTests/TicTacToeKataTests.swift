@@ -13,6 +13,7 @@ import Testing
 class TicTacToeBoard {
     enum TicTacToeError: Error {
         case outsideOfBoard
+        case alreadyOccupiedCell
     }
     
     enum TicTacToeCell {
@@ -95,9 +96,10 @@ struct TicTacToeKataTests {
         } throws: { error in
             guard let tttError = error as? TicTacToeBoard.TicTacToeError else {
                 Issue.record("The thrown error should be a TicTacToeError")
+                return false
             }
             
-            #expect(tttError == .alreadyOccupiedCell)
+            return tttError == .alreadyOccupiedCell
         }
     }
 }
