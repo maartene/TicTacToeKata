@@ -6,6 +6,7 @@
 //
 
 import Testing
+import Combine
 @testable import TicTacToeKata
 
 
@@ -105,5 +106,19 @@ struct TicTacToeKataTests {
             
             return tttError == .alreadyOccupiedCell
         }
+    }
+    
+    // MARK: Updating the UI
+    var cancelables = Set<AnyCancellable>()         // boilerplate for the reflective system of iOS UI framework `SwiftUI`
+    
+    @Test("When a cell is placed, the board notifies subscribers of the updated cells") func whenPlacingCell_subscribersAreNotified() throws {
+        var cells = [[TicTacToeBoard.TicTacToeCell]]()
+        board.$cells.sink { updatedCells in
+            cells = updatedCells
+        }
+        
+        try board.placeCell(.cross, at: 2, col: 1)
+        
+        #expect(cells == board.cells)
     }
 }
