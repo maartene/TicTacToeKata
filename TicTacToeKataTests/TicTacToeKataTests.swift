@@ -68,6 +68,10 @@ struct TicTacToeKataTests {
         }
     }
     
+    @Test("When a new board is created the 'cross' player is the active player") func onNewBoardActivePlayer() {
+        #expect(board.activePlayer == .cross)
+    }
+    
     // MARK: Updating the UI
     var cancelables = Set<AnyCancellable>()         // boilerplate for the reflective system of iOS UI framework `SwiftUI`
     

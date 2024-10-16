@@ -34,4 +34,12 @@
 ### (Possible) goals for next pom:
 - Determine active player (and show in UI)
 - Determine legal moves
-- Implement an 'AI' that makes legal moves. 
+- Implement an 'AI' that makes legal moves.
+
+## Pomodoro 4
+
+### Goals:
+- Determine active player (and show in UI)
+- Determine legal moves
+- Implement an 'AI' that makes legal moves.
+
