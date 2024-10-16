@@ -22,6 +22,7 @@ class TicTacToeBoard: ObservableObject {
     static let height = 3
     var width: Int { Self.width }
     var height: Int { Self.height }
+    var activePlayer = TicTacToeCell.cross
     
     @Published var cells: [[TicTacToeCell]] = Array(repeating: Array(repeating: .empty, count: width), count: height)
     
