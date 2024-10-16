@@ -103,7 +103,7 @@ struct TicTacToeKataTests {
         ]
         
         let expectedIllegalMoves = [
-            (0,2), (1,0), (2, 0)
+            (0,2), (0,1), (2, 0)
         ]
         
         try board.placeCell(at: 0, col: 2)
