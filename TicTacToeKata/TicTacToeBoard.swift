@@ -51,4 +51,8 @@ class TicTacToeBoard: ObservableObject {
             activePlayer = .nought
         }
     }
+    
+    var legalMoves: [(Int, Int)] {
+        []
+    }
 }
