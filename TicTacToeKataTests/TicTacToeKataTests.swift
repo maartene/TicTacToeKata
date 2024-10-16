@@ -95,6 +95,30 @@ struct TicTacToeKataTests {
         }
     }
     
+    @Test("On a new board with some cells filled, the other cells are legal moves") func legalMovesOnFilledBoard() throws {
+        let expectedLegalMoves = [
+            (0,0), (1,0),
+            (1,1), (2,1),
+            (1,2), (2,2),
+        ]
+        
+        let expectedIllegalMoves = [
+            (0,2), (1,0), (2, 0)
+        ]
+        
+        try board.placeCell(at: 0, col: 2)
+        try board.placeCell(at: 1, col: 0)
+        try board.placeCell(at: 2, col: 0)
+        
+        for expectedLegalMove in expectedLegalMoves {
+            #expect(board.legalMoves.contains(where: { $0.0 == expectedLegalMove.0 && $0.1 == expectedLegalMove.1}))
+        }
+        
+        for expectedIllegalMove in expectedIllegalMoves {
+            #expect(board.legalMoves.contains(where: { $0.0 == expectedIllegalMove.0 && $0.1 == expectedIllegalMove.1}) == false)
+        }
+    }
+    
     // MARK: Updating the UI
     var cancelables = Set<AnyCancellable>()         // boilerplate for the reflective system of iOS UI framework `SwiftUI`
     
