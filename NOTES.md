@@ -40,6 +40,9 @@
 
 ### Goals:
 - Determine active player (and show in UI) ✅
-- Determine legal moves
-- Implement an 'AI' that makes legal moves.
+- Determine legal moves ✅
+- Implement an 'AI' that makes legal moves. 🔴
 
+### (Possible) goals for next pom:
+- Implement an 'AI' that makes legal moves.
+- Refactor placeCell into placeCellAt(row:, col:)
