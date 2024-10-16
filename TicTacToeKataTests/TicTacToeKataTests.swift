@@ -87,7 +87,12 @@ struct TicTacToeKataTests {
             [(0,1), (1,1), (2,1)],
             [(0,2), (1,2), (2,2)],
         ]
-        #expect(board.legalMoves == expectedLegalMoves)
+        
+        for row in 0 ..< 3 {
+            for col in 0 ..< 3 {
+                #expect(board.legalMoves.contains(where: { $0.0 == col && $0.1 == row }))
+            }
+        }
     }
     
     // MARK: Updating the UI
