@@ -43,6 +43,8 @@ class TicTacToeBoard: ObservableObject {
             throw TicTacToeError.alreadyOccupiedCell
         }
         
+        activePlayer = .nought
+        
         cells[row][col] = cell
     }
 }
