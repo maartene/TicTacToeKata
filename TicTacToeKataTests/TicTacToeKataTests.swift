@@ -29,21 +29,19 @@ struct TicTacToeKataTests {
     }
     
     @Test("After placing a TicTacToeCell on a new board, the value of that cell is no longer empty") mutating func ticTacToeCellIsNotEmpty() throws {
-        let cell: TicTacToeBoard.TicTacToeCell = .nought
         let row: Int = 1
         let col: Int = 0
         
-        try board.placeCell(cell, at: row, col: col)
+        try board.placeCell(at: row, col: col)
         
-        #expect(board[row, col] == cell)
+        #expect(board[row, col] == .cross)
     }
     
     @Test("Placing a TicTacToeCell outside of the board, throws a TicTacToeError error") func ticTacToeCellOutsideOfBoardThrowsError() throws {
-        let cell = TicTacToeBoard.TicTacToeCell.cross
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: -1, col: 1) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 1, col: -1) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 4, col: 0) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(cell, at: 2, col: 67) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: -1, col: 1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 1, col: -1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 4, col: 0) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 2, col: 67) }
     }
     
     @Test("Retrieving a cell outside of the board, returns nil") func ticTacToeCellOutsideOfBoardReturnsNil() {
@@ -54,10 +52,10 @@ struct TicTacToeKataTests {
     }
     
     @Test("Placing a TicTacToeCell on an occupied space, throws a TicTacToeError.alreadyOccupiedCell error") func ticTacToeCellOnOccupiedCellThrowsError() throws {
-        try board.placeCell(.cross, at: 1, col: 2)
+        try board.placeCell(at: 1, col: 2)
         
         #expect {
-            try board.placeCell(.nought, at: 1, col: 2)
+            try board.placeCell(at: 1, col: 2)
         } throws: { error in
             guard let tttError = error as? TicTacToeBoard.TicTacToeError else {
                 Issue.record("The thrown error should be a TicTacToeError")
@@ -73,13 +71,13 @@ struct TicTacToeKataTests {
     }
     
     @Test("When a cell is placed on a new board, the 'nought' player becomes the active player") func whenPlacingACellOnANewBoard_nought_becomesActivePlayer() throws  {
-        try board.placeCell(.nought, at: 1, col: 1)
+        try board.placeCell(at: 1, col: 1)
         #expect(board.activePlayer == .nought)
     }
     
     @Test("When two cells are placed on a new board, the 'cross' player becomes the active player") func whenPlacingTwoCellsOnANewBoard_cross_becomesActivePlayer() throws  {
-        try board.placeCell(.nought, at: 1, col: 1)
-        try board.placeCell(.cross, at: 1, col: 2)
+        try board.placeCell(at: 1, col: 1)
+        try board.placeCell(at: 1, col: 2)
         #expect(board.activePlayer == .cross)
     }
     
@@ -92,7 +90,7 @@ struct TicTacToeKataTests {
             cells = updatedCells
         }.store(in: &cancelables)
         
-        try board.placeCell(.cross, at: 2, col: 1)
+        try board.placeCell(at: 2, col: 1)
         
         #expect(cells == board.cells)
     }

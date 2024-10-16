@@ -62,7 +62,7 @@ struct ContentView: View {
                 .foregroundStyle(.primary)
             
             Button("Place!") {
-                try? board.placeCell(.cross, at: 1, col: 2)
+                try? board.placeCell(at: 1, col: 2)
             }
             .buttonStyle(.borderedProminent)
             
