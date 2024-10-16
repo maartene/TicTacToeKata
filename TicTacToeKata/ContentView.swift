@@ -54,6 +54,9 @@ struct ContentView: View {
             }
             .padding()
             
+            Text("It is \(board.activePlayer)'s turn.")
+                .font(.headline)
+            
             Text("Player 1 wins")
                 .font(.title2)
                 .foregroundStyle(.primary)
