@@ -53,6 +53,14 @@ class TicTacToeBoard: ObservableObject {
     }
     
     var legalMoves: [(Int, Int)] {
-        []
+        
+        var result = [(Int, Int)]()
+        for row in 0 ..< height {
+            for col in 0 ..< width {
+                result.append((col, row))
+            }
+        }
+        
+        return result
     }
 }
