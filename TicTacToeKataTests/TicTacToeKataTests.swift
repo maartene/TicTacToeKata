@@ -81,6 +81,15 @@ struct TicTacToeKataTests {
         #expect(board.activePlayer == .cross)
     }
     
+    @Test("On a new board, all moves are legal") func legalMovesOnNewBoard() {
+        let expectedLegalMoves = Set([
+            [(0,0), (1,0), (2,0)],
+            [(0,1), (1,1), (2,1)],
+            [(0,2), (1,2), (2,2)],
+        ])
+        #expect(board.legalMoves == expectedLegalMoves)
+    }
+    
     // MARK: Updating the UI
     var cancelables = Set<AnyCancellable>()         // boilerplate for the reflective system of iOS UI framework `SwiftUI`
     

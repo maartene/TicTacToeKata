@@ -39,7 +39,7 @@
 ## Pomodoro 4
 
 ### Goals:
-- Determine active player (and show in UI)
+- Determine active player (and show in UI) ✅
 - Determine legal moves
 - Implement an 'AI' that makes legal moves.
 
