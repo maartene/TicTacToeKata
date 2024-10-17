@@ -61,8 +61,15 @@ struct ContentView: View {
                 .font(.title2)
                 .foregroundStyle(.primary)
             
-            Button("Place!") {
-                try? board.placeCellAt(row: 1, col: 2)
+            Button("Play!") {
+                DispatchQueue.global().async {
+                    while let move = board.aiMove() {
+                        DispatchQueue.main.sync {
+                            try? board.placeCellAt(row: move.row, col: move.col)
+                        }                        
+                        sleep(1)
+                    }
+                }
             }
             .buttonStyle(.borderedProminent)
             

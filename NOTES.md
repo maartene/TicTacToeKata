@@ -51,4 +51,8 @@
 
 ## Goals:
 - Refactor placeCell into placeCellAt(row:, col:) ✅
-- Implement an 'AI' that makes legal moves.
+- Implement an 'AI' that makes legal moves. ✅
+- Autoplay in UI ✅ (in the most duct tape way possible)
+
+## Final thoughts
+* It took me 5 
