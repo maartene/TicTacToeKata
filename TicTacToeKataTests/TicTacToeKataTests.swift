@@ -134,4 +134,14 @@ struct TicTacToeKataTests {
             #expect(board.legalMoves.contains(where: { $0.col == move.col && $0.row == move.row}))
         }
     }
+    
+    @Test("When no more leval moves are available, aiMove returns nil") func aiNoMoreLegalMoves() throws {
+        for row in 0 ..< 3 {
+            for col in 0 ..< 3 {
+                try board.placeCellAt(row: row, col: col)
+            }
+        }
+        
+        #expect(board.aiMove() == nil)
+    }
 }
