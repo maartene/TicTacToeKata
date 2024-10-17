@@ -128,9 +128,9 @@ struct TicTacToeKataTests {
     }
     
     // MARK: "AI"
-    @Test("The AI decides on a legal move") func aiDecidesOnLegalMove() {
+    @Test("The AI decides on a legal move") func aiDecidesOnLegalMove() throws {
         for _ in 0 ..< 100 {
-            let move = board.aiMove()
+            let move = try #require(board.aiMove())
             #expect(board.legalMoves.contains(where: { $0.col == move.col && $0.row == move.row}))
         }
     }
