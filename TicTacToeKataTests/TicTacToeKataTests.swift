@@ -131,7 +131,7 @@ struct TicTacToeKataTests {
     @Test("The AI decides on a legal move") func aiDecidesOnLegalMove() {
         for _ in 0 ..< 100 {
             let move = board.aiMove()
-            
+            #expect(board.legalMoves.contains(where: { $0.col == move.col && $0.row == move.row}))
         }
     }
 }

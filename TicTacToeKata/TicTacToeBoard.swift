@@ -52,7 +52,7 @@ class TicTacToeBoard: ObservableObject {
         }
     }
     
-    var legalMoves: [(Int, Int)] {
+    var legalMoves: [(col: Int, row: Int)] {
         var result = [(Int, Int)]()
         for row in 0 ..< height {
             for col in 0 ..< width {
@@ -63,5 +63,9 @@ class TicTacToeBoard: ObservableObject {
         }
         
         return result
+    }
+    
+    func aiMove() -> (row: Int, col: Int) {
+        (-1,-1)
     }
 }
