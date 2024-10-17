@@ -55,4 +55,7 @@
 - Autoplay in UI ✅ (in the most duct tape way possible)
 
 ## Final thoughts
-* It took me 5 
+- It took me 5 pomodoro's to implement all but the win condition detection;
+- One code improvement I would like to make is to remove the subscript of 'board', as that one isn't used anywhere other than in the tests. This feels like a risk as I might be testing code that isn't used in production.
+    - One risk of doing this is that 'out of bounds' tests become less safe (i.e. these typically become traps)
+- I estimate that it will take me 3 more pomodoro's to implement win condition detection, visual feedback and restarting of the game.
