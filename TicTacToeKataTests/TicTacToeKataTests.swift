@@ -32,16 +32,16 @@ struct TicTacToeKataTests {
         let row: Int = 1
         let col: Int = 0
         
-        try board.placeCell(at: row, col: col)
+        try board.placeCellAt(row: row, col: col)
         
         #expect(board[row, col] == .cross)
     }
     
     @Test("Placing a TicTacToeCell outside of the board, throws a TicTacToeError error") func ticTacToeCellOutsideOfBoardThrowsError() throws {
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: -1, col: 1) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 1, col: -1) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 4, col: 0) }
-        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCell(at: 2, col: 67) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCellAt(row: -1, col: 1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCellAt(row: 1, col: -1) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCellAt(row: 4, col: 0) }
+        #expect(throws: (TicTacToeBoard.TicTacToeError).self) { try board.placeCellAt(row: 2, col: 67) }
     }
     
     @Test("Retrieving a cell outside of the board, returns nil") func ticTacToeCellOutsideOfBoardReturnsNil() {
@@ -52,10 +52,10 @@ struct TicTacToeKataTests {
     }
     
     @Test("Placing a TicTacToeCell on an occupied space, throws a TicTacToeError.alreadyOccupiedCell error") func ticTacToeCellOnOccupiedCellThrowsError() throws {
-        try board.placeCell(at: 1, col: 2)
+        try board.placeCellAt(row: 1, col: 2)
         
         #expect {
-            try board.placeCell(at: 1, col: 2)
+            try board.placeCellAt(row: 1, col: 2)
         } throws: { error in
             guard let tttError = error as? TicTacToeBoard.TicTacToeError else {
                 Issue.record("The thrown error should be a TicTacToeError")
@@ -71,13 +71,13 @@ struct TicTacToeKataTests {
     }
     
     @Test("When a cell is placed on a new board, the 'nought' player becomes the active player") func whenPlacingACellOnANewBoard_nought_becomesActivePlayer() throws  {
-        try board.placeCell(at: 1, col: 1)
+        try board.placeCellAt(row: 1, col: 1)
         #expect(board.activePlayer == .nought)
     }
     
     @Test("When two cells are placed on a new board, the 'cross' player becomes the active player") func whenPlacingTwoCellsOnANewBoard_cross_becomesActivePlayer() throws  {
-        try board.placeCell(at: 1, col: 1)
-        try board.placeCell(at: 1, col: 2)
+        try board.placeCellAt(row: 1, col: 1)
+        try board.placeCellAt(row: 1, col: 2)
         #expect(board.activePlayer == .cross)
     }
     
@@ -106,9 +106,9 @@ struct TicTacToeKataTests {
             (0,2), (0,1), (2, 0)
         ]
         
-        try board.placeCell(at: 0, col: 2)
-        try board.placeCell(at: 1, col: 0)
-        try board.placeCell(at: 2, col: 0)
+        try board.placeCellAt(row: 0, col: 2)
+        try board.placeCellAt(row: 1, col: 0)
+        try board.placeCellAt(row: 2, col: 0)
         
         for expectedLegalMove in expectedLegalMoves {
             #expect(board.legalMoves.contains(where: { $0.0 == expectedLegalMove.0 && $0.1 == expectedLegalMove.1}))
@@ -128,7 +128,7 @@ struct TicTacToeKataTests {
             cells = updatedCells
         }.store(in: &cancelables)
         
-        try board.placeCell(at: 2, col: 1)
+        try board.placeCellAt(row: 2, col: 1)
         
         #expect(cells == board.cells)
     }

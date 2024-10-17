@@ -46,3 +46,9 @@
 ### (Possible) goals for next pom:
 - Implement an 'AI' that makes legal moves.
 - Refactor placeCell into placeCellAt(row:, col:)
+
+## Pomodoro 5
+
+## Goals:
+- Refactor placeCell into placeCellAt(row:, col:)
+- Implement an 'AI' that makes legal moves.

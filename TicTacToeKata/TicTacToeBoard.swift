@@ -34,7 +34,7 @@ class TicTacToeBoard: ObservableObject {
         return cells[row][col]
     }
     
-    func placeCell(at row: Int, col: Int) throws {
+    func placeCellAt(row: Int, col: Int) throws {
         guard (0 ..< width).contains(col), (0 ..< height).contains(row) else {
             throw TicTacToeError.outsideOfBoard
         }
