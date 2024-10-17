@@ -65,7 +65,7 @@ class TicTacToeBoard: ObservableObject {
         return result
     }
     
-    func aiMove() -> (row: Int, col: Int) {
-        (-1,-1)
+    func aiMove() -> (col: Int, row: Int) {
+        legalMoves.randomElement()!
     }
 }
