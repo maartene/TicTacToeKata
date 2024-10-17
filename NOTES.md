@@ -50,5 +50,5 @@
 ## Pomodoro 5
 
 ## Goals:
-- Refactor placeCell into placeCellAt(row:, col:)
+- Refactor placeCell into placeCellAt(row:, col:) ✅
 - Implement an 'AI' that makes legal moves.

@@ -126,4 +126,12 @@ struct TicTacToeKataTests {
         
         #expect(cells == board.cells)
     }
+    
+    // MARK: "AI"
+    @Test("The AI decides on a legal move") func aiDecidesOnLegalMove() {
+        for _ in 0 ..< 100 {
+            let move = board.aiMove()
+            
+        }
+    }
 }
